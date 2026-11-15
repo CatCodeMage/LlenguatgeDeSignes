@@ -4,13 +4,28 @@ Web para aprender el alfabeto dactilológico (letras con la mano) y modelo de vi
 
 > Mi Treball de Recerca de bachillerato (2022-2023). Fue mi primer proyecto grande con IA.
 
-<!-- TODO: añade una captura de la web y una imagen de la detección (la caja sobre la mano con la letra). -->
+**Pruébalo:** la versión en lengua de signos americana (ASL) está publicada en [singsasl.anvil.app](https://singsasl.anvil.app). También está la [presentación del proyecto](https://prezi.com/p/6jdzvdahvwat/shorted-i-can/).
+
+## Capturas
+
+**Traductor de nombres**: escribes un nombre y la web lo deletrea signo a signo.
+
+![Traductor de nombres](img/traductor-nombres.png)
+
+**Ejercicios**: la web enseña un signo y hay que escribir la letra.
+
+![Ejercicio de letras](img/ejercicio.png)
+
+**Ejercicio con IA** (experimental): subes una foto haciendo una letra y el modelo dice cuál es.
+
+![Ejercicio con IA: el modelo reconoce la letra O](img/ejercicio-ia.png)
 
 ## Qué hace
 
 **Web de aprendizaje** (hecha con [Anvil](https://anvil.works), en Python)
 - Teoría inicial, vocales y consonantes del alfabeto, con imágenes de cada signo.
 - **Examen** con preguntas aleatorias que no se repiten y nota al final.
+- **Traductor de nombres**: deletrea con signos el nombre que escribas.
 
 **Reconocimiento de signos con IA**
 1. **Captura del dataset**: un script con OpenCV hace fotos con la webcam para cada letra (`0.5_version/training/recordScript`).
