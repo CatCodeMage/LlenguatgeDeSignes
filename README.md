@@ -1,59 +1,59 @@
-# Traductor de lengua de signos con IA
+# Sign language translator with AI
 
-Web para aprender el alfabeto dactilológico (letras con la mano) y modelo de visión por computador que reconoce letras signadas a partir de una foto de la webcam.
+A web app to learn fingerspelling (the manual alphabet) and a computer vision model that recognizes signed letters from a webcam photo.
 
-> Mi Treball de Recerca de bachillerato (2022-2023). Fue mi primer proyecto grande con IA.
+> My high school research project (*Treball de Recerca*, 2022-2023). It was my first big AI project.
 
-**Pruébalo:** la versión en lengua de signos americana (ASL) está publicada en [singsasl.anvil.app](https://singsasl.anvil.app). También está la [presentación del proyecto](https://prezi.com/p/6jdzvdahvwat/shorted-i-can/).
+**Try it:** the American Sign Language (ASL) version is live at [singsasl.anvil.app](https://singsasl.anvil.app). There is also a [presentation of the project](https://prezi.com/p/6jdzvdahvwat/shorted-i-can/).
 
-## Capturas
+## Screenshots
 
-**Traductor de nombres**: escribes un nombre y la web lo deletrea signo a signo.
+**Name translator**: type a name and the app spells it sign by sign.
 
-![Traductor de nombres](img/traductor-nombres.png)
+![Name translator](img/traductor-nombres.png)
 
-**Ejercicios**: la web enseña un signo y hay que escribir la letra.
+**Exercises**: the app shows a sign and you type the letter.
 
-![Ejercicio de letras](img/ejercicio.png)
+![Letter exercise](img/ejercicio.png)
 
-**Ejercicio con IA** (experimental): subes una foto haciendo una letra y el modelo dice cuál es.
+**AI exercise** (experimental): upload a photo of yourself signing a letter and the model tells you which one it is.
 
-![Ejercicio con IA: el modelo reconoce la letra O](img/ejercicio-ia.png)
+![AI exercise: the model recognizes the letter O](img/ejercicio-ia.png)
 
-## Qué hace
+## What it does
 
-**Web de aprendizaje** (hecha con [Anvil](https://anvil.works), en Python)
-- Teoría inicial, vocales y consonantes del alfabeto, con imágenes de cada signo.
-- **Examen** con preguntas aleatorias que no se repiten y nota al final.
-- **Traductor de nombres**: deletrea con signos el nombre que escribas.
+**Learning web app** (built with [Anvil](https://anvil.works), in Python)
+- Intro theory, vowels and consonants of the alphabet, with a picture of each sign.
+- **Quiz** with random, non-repeating questions and a final score.
+- **Name translator**: spells out in signs whatever name you type.
 
-**Reconocimiento de signos con IA**
-1. **Captura del dataset**: un script con OpenCV hace fotos con la webcam para cada letra (`0.5_version/training/recordScript`).
-2. **Etiquetado** de las imágenes con [labelImg](https://github.com/HumanSignal/labelImg) (cajas en formato Pascal VOC).
-3. **Entrenamiento** de un modelo [YOLOv5](https://github.com/ultralytics/yolov5) en Google Colab.
-4. **Conexión con la web** mediante Anvil Uplink: la web envía la foto, el modelo detecta la letra y devuelve el resultado.
+**Sign recognition with AI**
+1. **Dataset capture**: an OpenCV script takes webcam photos for each letter (`0.5_version/training/recordScript`).
+2. **Labeling** the images with [labelImg](https://github.com/HumanSignal/labelImg) (bounding boxes in Pascal VOC format).
+3. **Training** a [YOLOv5](https://github.com/ultralytics/yolov5) model on Google Colab.
+4. **Connecting it to the web app** through Anvil Uplink: the app sends the photo, the model detects the letter and returns the result.
 
-Antes de YOLOv5 probé TensorFlow Object Detection (SSD MobileNet), en `PaginaWeb/Codi_IA_experimental`.
+Before YOLOv5 I tried TensorFlow Object Detection (SSD MobileNet), in `PaginaWeb/Codi_IA_experimental`.
 
-## Versiones
+## Versions
 
-| Carpeta | Versión |
+| Folder | Version |
 |---|---|
-| `PaginaWeb/` | v0.21: web de aprendizaje y primeros experimentos de IA |
-| `0.5_version/` | v0.5: web conectada al modelo YOLOv5 |
-| `TR_V.0.5_English_American/` | v0.5 adaptada a la lengua de signos americana (ASL) |
+| `PaginaWeb/` | v0.21: learning web app and first AI experiments |
+| `0.5_version/` | v0.5: web app connected to the YOLOv5 model |
+| `TR_V.0.5_English_American/` | v0.5 adapted to American Sign Language (ASL) |
 
-## Tecnologías
+## Tech
 
 Python · Anvil · YOLOv5 (PyTorch) · OpenCV · labelImg · Google Colab · Jupyter
 
-## Limitaciones
+## Limitations
 
-- El dataset es muy pequeño (pocas fotos por letra, todas hechas por mí) y solo cubre algunas letras (en el repo, la I, la O y la U), así que el modelo no generaliza bien a otras manos ni fondos.
-- Reconoce letras estáticas en una foto, no signos en movimiento ni vídeo en tiempo real.
+- The dataset is very small (a few photos per letter, all taken by me) and only covers some letters (in this repo: I, O and U), so the model does not generalize well to other hands or backgrounds.
+- It recognizes static letters in a photo, not signs in motion or real-time video.
 
-## Lo que haría hoy
+## What I would do today
 
-- Usar puntos clave de la mano (por ejemplo, MediaPipe Hands) en lugar de detección de objetos, que pide muchos menos datos.
-- Ampliar el dataset con más personas y fondos.
-- Reconocimiento en tiempo real con vídeo.
+- Use hand keypoints (for example, MediaPipe Hands) instead of object detection, which needs far less data.
+- Grow the dataset with more people and backgrounds.
+- Real-time recognition on video.
